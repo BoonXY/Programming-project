@@ -1,0 +1,46 @@
+# ---------------------------------------------------------------------------
+# FUNCTION 2: BOOK APPOINTMENT
+# ---------------------------------------------------------------------------
+def book_appointment():
+    """
+    Book an appointment for a patient.
+
+    Inputs:
+        - Department       (GP or Specialist)
+        - Appointment date (valid date, more than 7 days from today)
+    Process:
+        - Repeatedly prompt for each value until it passes validation,
+          displaying an error message on every invalid attempt.
+    Outputs:
+        - A confirmation message showing the booked department and date.
+    """
+    print("\n--- Book Appointment ---")
+
+    # --- Department: must be GP or Specialist ---
+    while True:
+        department = input("Enter department (GP / Specialist): ").strip().upper()
+        if department not in VALID_DEPARTMENTS:
+            print("Error: Department must be 'GP' or 'Specialist'. Please try again.")
+        else:
+            break
+
+    # --- Appointment date: must be valid AND more than 7 days from today ---
+    while True:
+        date_input = input("Enter appointment date (YYYY-MM-DD): ").strip()
+        try:
+            appointment_date = datetime.strptime(date_input, DATE_FORMAT).date()
+        except ValueError:
+            print("Error: Date must be a valid date in YYYY-MM-DD format. Please try again.")
+            continue
+
+        earliest_allowed_date = datetime.now().date() + timedelta(days=MIN_DAYS_AHEAD_FOR_APPOINTMENT)
+        if appointment_date <= earliest_allowed_date:
+            print(f"Error: Appointment date must be more than {MIN_DAYS_AHEAD_FOR_APPOINTMENT} "
+                  f"days from today. Please try again.")
+            continue
+        break
+
+    department_display = "GP" if department == "GP" else "Specialist"
+    print("\nAppointment booked successfully!")
+    print(f"Department : {department_display}")
+    print(f"Date       : {appointment_date.strftime(DATE_FORMAT)}")
