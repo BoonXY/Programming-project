@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------------
+# FUNCTION 3: CALCULATE BILL
+# ---------------------------------------------------------------------------
+def calculate_bill():
+    """
+    Calculate a patient's bill.
+
+    Inputs:
+        - Patient type          (Subsidised or Private)
+        - Number of lab tests   (whole number, zero or more)
+    Process:
+        - subtotal = BASE_CONSULTATION_FEE + (number_of_lab_tests * LAB_TEST_RATE)
+        - Subsidised patients receive a 30% discount (total = subtotal * 0.70)
+        - Private patients pay the full subtotal
+    Outputs:
+        - The patient type and the final amount to pay.
+    """
+    print("\n--- Calculate Bill ---")
+
+    # --- Patient type: must be Subsidised or Private ---
+    while True:
+        patient_type = input("Enter patient type (Subsidised / Private): ").strip().upper()
+        if patient_type not in VALID_PATIENT_TYPES:
+            print("Error: Patient type must be 'Subsidised' or 'Private'. Please try again.")
+        else:
+            break
+
+    # --- Number of lab tests: must be a whole number ---
+    while True:
+        tests_input = input("Enter number of lab tests completed: ").strip()
+        if not tests_input.isdigit():
+            print("Error: Number of lab tests must be a whole number. Please try again.")
+            continue
+        num_lab_tests = int(tests_input)
+        break
+
+    subtotal = BASE_CONSULTATION_FEE + (num_lab_tests * LAB_TEST_RATE)
+
+    if patient_type == "SUBSIDISED":
+        total = subtotal * SUBSIDISED_DISCOUNT_MULTIPLIER
+    else:
+        total = subtotal
+
+    patient_type_display = "Subsidised" if patient_type == "SUBSIDISED" else "Private"
+    print("\nBill calculated successfully!")
+    print(f"Patient Type : {patient_type_display}")
+    print(f"Total to Pay : ${total:.2f}")
