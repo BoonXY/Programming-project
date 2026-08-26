@@ -1,0 +1,51 @@
+# ---------------------------------------------------------------------------
+# FUNCTION 1: REGISTER PATIENT
+# ---------------------------------------------------------------------------
+def register_patient():
+    """
+    Register a new patient.
+
+    Inputs:
+        - Patient name    (non-blank string)
+        - Patient age     (positive whole number)
+        - Patient ID      (non-blank string)
+    Process:
+        - Repeatedly prompt for each value until it passes validation,
+          displaying an error message on every invalid attempt.
+    Outputs:
+        - A confirmation message showing the registered patient's details.
+    """
+    print("\n--- Register Patient ---")
+
+    # --- Name: must not be blank ---
+    while True:
+        name = input("Enter patient's name: ").strip()
+        if name == "":
+            print("Error: Name cannot be blank. Please try again.")
+        else:
+            break
+
+    # --- Age: must be a positive whole number ---
+    while True:
+        age_input = input("Enter patient's age: ").strip()
+        if not age_input.isdigit():
+            print("Error: Age must be a positive whole number. Please try again.")
+            continue
+        age = int(age_input)
+        if age <= 0:
+            print("Error: Age must be a positive whole number. Please try again.")
+            continue
+        break
+
+    # --- ID: must not be blank ---
+    while True:
+        patient_id = input("Enter patient's ID: ").strip()
+        if patient_id == "":
+            print("Error: Patient ID cannot be blank. Please try again.")
+        else:
+            break
+
+    print("\nPatient registered successfully!")
+    print(f"Name : {name}")
+    print(f"Age  : {age}")
+    print(f"ID   : {patient_id}")
