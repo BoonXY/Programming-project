@@ -34,7 +34,7 @@ Docker Compose is the recommended way to run CareBridge Hospital.
 1. Open the project directory
 PowerShell:
 
-cd "C:\Users\jiye1\Downloads\CareBridge-Hospital"
+cd "C:\Users\[name]\Downloads\CareBridge-Hospital"
 If the repository was cloned into another directory, use that directory instead.
 
 2. Build and start the application
@@ -115,7 +115,7 @@ SQLite Database
 1. Start CareBridge Hospital
 Open PowerShell:
 
-cd "C:\Users\jiye1\Downloads\CareBridge-Hospital"
+cd "C:\Users\[name]\Downloads\CareBridge-Hospital"
 Start Docker Compose:
 
 docker compose up -d
