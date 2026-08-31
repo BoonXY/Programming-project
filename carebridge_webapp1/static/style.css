@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #EFF3F1;
+  --surface: #FFFFFF;
+  --ink: #1E2B29;
+  --ink-muted: #5B6B67;
+  --border: #D8E0DD;
+  --accent: #2F6F63;
+  --accent-dark: #234F46;
+  --error: #A8433A;
+  --error-bg: #FBEEEC;
+
+  --dept-register: #2F6F63;
+  --dept-appointment: #3C6E8F;
+  --dept-bill: #B8863C;
+  --dept-triage: #A8433A;
+
+  --waiting: #4B7A5B;
+  --room1: #B8863C;
+  --room2: #A8433A;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 600;
+  margin: 0 0 0.25em 0;
+  color: var(--ink);
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 1.1rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.topbar .brand {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--accent-dark);
+}
+
+.topbar .portal {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.topbar .back {
+  margin-left: auto;
+  color: var(--accent-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.topbar .back:hover { text-decoration: underline; }
+
+.content {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ---------- Menu ---------- */
+
+.menu-intro { margin-bottom: 1.75rem; }
+.menu-intro h1 { font-size: 1.6rem; }
+.menu-intro p { color: var(--ink-muted); margin: 0; }
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.menu-item {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--tab-color, var(--accent));
+  border-radius: 3px;
+  padding: 1rem 1.15rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.menu-item:hover, .menu-item:focus-visible {
+  transform: translateX(2px);
+  box-shadow: 0 2px 10px rgba(30, 43, 41, 0.08);
+  outline: none;
+}
+
+.menu-item .item-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.menu-item .item-desc {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
+}
+
+/* ---------- Forms ---------- */
+
+.page-intro { margin-bottom: 1.5rem; }
+.page-intro h1 { font-size: 1.5rem; }
+.page-intro p { color: var(--ink-muted); margin: 0; }
+
+form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.field label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.92rem;
+  margin-bottom: 0.35rem;
+}
+
+.field input, .field select {
+  width: 100%;
+  font: inherit;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.field input:focus, .field select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.field.has-error input, .field.has-error select {
+  border-color: var(--error);
+}
+
+.field .hint {
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  margin-top: 0.3rem;
+}
+
+.field .error-msg {
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  font: inherit;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+}
+
+.submit-btn:hover { background: var(--accent-dark); }
+
+/* ---------- Confirmation slip ---------- */
+
+.slip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--slip-color, var(--accent));
+  border-radius: 3px;
+  padding: 1.4rem 1.5rem;
+}
+
+.slip h2 {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.slip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+.slip-row:last-child { border-bottom: none; }
+
+.slip-row .label { color: var(--ink-muted); }
+.slip-row .value { font-weight: 600; text-align: right; }
+
+.slip-row.total .value { font-size: 1.15rem; color: var(--accent-dark); }
+
+.triage-badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--badge-color, var(--accent));
+}
+
+.actions {
+  margin-top: 1.4rem;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.actions a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.actions a:hover { text-decoration: underline; }
